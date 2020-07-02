@@ -24,27 +24,28 @@ var reservations = [
     ];
 
 
-// Displays all characters
-app.get("/api/reservations", function(req, res) {
-    return res.json(reservations);
-});
-
 // // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
 //other html pages
-app.get("/add", function(req, res) {
-    res.sendFile(path.join(__dirname, "add.html"));
+app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/api/reservations", function(req, res) {
-    res.sendFile(path.join(__dirname, "reservations.html"));
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-// Create New Characters - takes in JSON input
-app.post("/api/reservations", function(req, res) {
+// Displays all reservations
+app.get("/api/tables", function(req, res) {
+    return res.json(reservations);
+});
+
+
+// Create New Reservations - takes in JSON input
+app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
     var newRes = req.body;
 
@@ -82,6 +83,39 @@ app.listen(PORT, function() {
 // * Use jQuery to run AJAX calls to GET and POST data from users to the Express server
 
 
+
+
+// ## Phase II - For this second phase, aim to complete the following
+
+// * Backend Team:
+
+// Create a basic Express server.
+
+// Your server at this point should do the BARE MINIMUM. (Effectively, it should just say: "Listening at PORT 3000" when the command node server.js is run.)
+
+// * Frontend Team:
+
+// Create three HTML files one called home.html, another called tables.html, and another called reserve.html. Use dummy data and create pages similar to the one shown to you on the sample Hot Reservation webpage.
+// All: If you finish early, begin thinking about how the Data, API, and Routes should look.
+
+
+
+
+// ## Phase III - For this third phase, aim to complete the following
+
+// * Backend Team:
+
+// Create a set of variables (hint: arrays of objects) for holding the reservation and waitlist data
+
+// Create a set of routes that then display this data as JSONs. Users should be given these JSONs if they visit the appropriate page (i.e. if a user visits localhost:3000/api/tables they should see a JSON of table data).
+
+// * Frontend Team:
+
+// Temporarily join the backend team. Your task will be to create Express routes that display your HTML pages when a user visits the appropriate page. (i.e. if a user visits localhost:3000/tables... they should be shown the table.html page.)
+
+// If you finish early begin creating the code necessary to convert your form data into JSON objects.
+
+// ---------------------
 
 //=============================================================
 
