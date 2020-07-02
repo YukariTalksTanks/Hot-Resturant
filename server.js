@@ -49,7 +49,7 @@ app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
     var newRes = req.body;
 
-    newRes.routeName = Reservation.name.replace(/\s+/g, "").toLowerCase();
+    newRes.routeName = reservations.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newRes);
 
