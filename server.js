@@ -2,6 +2,68 @@
 var express = require("express");
 var path = require("path");
 
+//Sets up the Express App
+// =============================================================
+var app = express();
+var PORT = 3000;
+
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// // Reservations (DATA)
+// // =============================================================
+var reservations = [
+    {
+        routeName: "example",
+        id: "exampleID",
+        name: "Example",
+        email: "example@example.com",
+        phone: "000-000-0000"
+    },
+    ];
+
+
+// Displays all characters
+app.get("/api/reservations", function(req, res) {
+    return res.json(reservations);
+});
+
+// // Basic route that sends the user first to the AJAX Page
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+//other html pages
+app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "add.html"));
+});
+
+app.get("/api/reservations", function(req, res) {
+    res.sendFile(path.join(__dirname, "reservations.html"));
+});
+
+// Create New Characters - takes in JSON input
+app.post("/api/reservations", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+    var newRes = req.body;
+
+    newRes.routeName = Reservation.name.replace(/\s+/g, "").toLowerCase();
+
+    console.log(newRes);
+
+    characters.push(newRes);
+
+    res.json(newRes);
+});
+
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+});
+
 
 
 
