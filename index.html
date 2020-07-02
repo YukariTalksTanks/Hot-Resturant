@@ -36,10 +36,10 @@
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
       var newRes= {
-        name: $("#name").val().trim(),
-        phone: $("#role").val().trim(),
-        email: $("#age").val().trim(),
-        id: $("#force-points").val().trim()
+        name: $("#name").val().trim(),    //#id should match field
+        phone: $("#phone").val().trim(),  //#id should match field
+        email: $("#email").val().trim(),  //#id should match field
+        id: $("#unique-id").val().trim()  //#id should match field
       };
 
       $.post("/api/reservations", newRes)
