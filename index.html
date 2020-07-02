@@ -5,10 +5,8 @@
   <meta charset="UTF-8">
   <title>Star Wars - Express</title>
   <!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -20,19 +18,39 @@
     <div class="jumbotron" style="text-align:center;">
       <h1>Hot Restaurant!</h1>
       <h3>Book your seat before they are all gone!</h3>
-        <hr>
+      <hr>
       <a href="/tables"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> View Tables</button></a>
+
       <a href="/reserve.html"><button class="btn btn-danger btn-lg"><span
             class="fa fa-eye"></span> Make Reservation</button></a>
+
     </div>
 
   </div>
 
-<footer class = "footer">
+  <footer class="footer">
     <div class="container">
-        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
-      </div>
-</footer>
+      <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newRes= {
+        name: $("#name").val().trim(),    //#id should match field
+        phone: $("#phone").val().trim(),  //#id should match field
+        email: $("#email").val().trim(),  //#id should match field
+        id: $("#unique-id").val().trim()  //#id should match field
+      };
+
+      $.post("/api/reservations", newRes)
+        .then(function(data) {
+          console.log("add.html", data);
+          alert("Adding your reservation now...");
+        });
+    });
+  </script>
 </body>
 
 </html>
