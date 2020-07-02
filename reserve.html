@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Reservation Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="text-align:center;">
+            <h1>Hot Restaurant!</h1>
+            <h3>Book your seat before they are all gone!</h3>
+            <hr>
+            <a href="/tables"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> View
+                    Tables</button></a>
+            <a href="/index.html"><button class="btn btn-danger btn-lg"><span class="fa fa-home"></span></button></a>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Table reservation
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="resName">Name</label>
+                                <input type="text" class="form-control" id="resName">
+                            </div>
+                            <div class="form-group">
+                                <label for="resPhone">Phone</label>
+                                <input type="text" class="form-control" id="resName">
+                            </div>
+                            <div class="form-group">
+                                <label for="resEmail">Email</label>
+                                <input type="text" class="form-control" id="resName">
+                            </div>
+                            <div class="form-group">
+                                <label for="resID">Unique ID</label>
+                                <input type="text" class="form-control" id="resName">
+                            </div>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script type="text/javascript">
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+  
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+  
+      // Here we grab the form elements
+      var newReservation = {
+        customerName: $("#reserve-name").val().trim(),
+        phoneNumber: $("#reserve-phone").val().trim(),
+        customerEmail: $("#reserve-email").val().trim(),
+        customerID: $("#reserve-unique-id").val().trim()
+      };
+  
+      console.log(newReservation);
+  
+      // This line is the magic. It"s very similar to the standard ajax function we used.
+      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+      // depending on if a tables is available or not.
+  
+      $.post("/api/tables", newReservation,
+        function(data) {
+  
+          // If a table is available... tell user they are booked.
+          if (data) {
+            alert("Yay! You are officially booked!");
+          }
+  
+          // If a table is available... tell user they on the waiting list.
+          else {
+            alert("Sorry you are on the wait list");
+          }
+  
+          // Clear the form when submitting
+          $("#reserve-name").val("");
+          $("#reserve-phone").val("");
+          $("#reserve-email").val("");
+          $("#reserve-unique-id").val("");
+  
+        });
+  
+    }); -->
+
+</script>
+
+</html>
