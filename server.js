@@ -23,6 +23,10 @@ const reservations = [
     },
     ];
 
+const waitlist = [
+    ];
+
+
 
 // // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
@@ -44,17 +48,33 @@ app.get("/api/tables", function(req, res) {
     console.log('on tables page');
 });
 
+// Displays all reservations
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+});
+
 
 // Create New Reservations - takes in JSON input
 app.post("/api/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
     var newRes = req.body;
 
-    console.log(newRes);
+    if (reservations.length < 5) {
 
-    reservations.push(newRes);
+        console.log(newRes);
 
-    res.json(newRes);
+        reservations.push(newRes);
+
+        res.json(true);
+    } else {
+        
+        console.log(newRes);
+
+        waitlist.push(newRes);
+
+        res.json(false);
+    }
+
 });
 
 
