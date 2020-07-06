@@ -69,6 +69,29 @@
     </footer>
 
     <script type="text/javascript">
+            function table() {
+            $.ajax(
+                {
+                    url: "/api/tables",
+                    method: "GET"
+                }).then(function (data) {
+                    console.log(data)
+                    for (var i = 0; i < reservations.length; i++) {
+                        var tableList = $("#tablelist")
+                        var listItem = $("<li class='list-group-item mt-4'>");
+                        listItem.append(
+                            $("<h2>").text("Table #" + (i + 1)),
+                            $("<hr>"),
+                            $("<h2>").text("ID: " + reservations[i].id),
+                            $("<h2>").text("Name: " + reservations[i].routeName),
+                            $("<h2>").text("Email: " + reservations[i].email),
+                            $("<h2>").text("Phone: " + reservations[i].phoneNumber)
+                        );
+                        tableList.append(listItem);
+                    }
+                })
+        }
+        table()
         $("#search-btn").on("click", function() {
           var searchedCharacter = $("#character-search").val().trim();
     
