@@ -1,11 +1,11 @@
 //dependencies
-var express = require("express");
-var path = require("path");
+const express = require("express");
+const  path = require("path");
 
 //Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = 3000;
+const app = express();
+let PORT = 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +13,7 @@ app.use(express.json());
 
 // // Reservations (DATA)
 // // =============================================================
-var reservations = [
+const reservations = [
     {
         routeName: "example",
         id: "exampleID",
@@ -41,19 +41,18 @@ app.get("/tables", function(req, res) {
 // Displays all reservations
 app.get("/api/tables", function(req, res) {
     return res.json(reservations);
+    console.log('on tables page');
 });
 
 
 // Create New Reservations - takes in JSON input
-app.post("/tables", function(req, res) {
+app.post("/api/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
     var newRes = req.body;
 
-    newRes.routeName = reservations.name.replace(/\s+/g, "").toLowerCase();
-
     console.log(newRes);
 
-    characters.push(newRes);
+    reservations.push(newRes);
 
     res.json(newRes);
 });
